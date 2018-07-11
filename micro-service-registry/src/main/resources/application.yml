@@ -1,0 +1,6 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false # 是否注册自己到eureka
+    fetch-registry: false # 是否开启服务发现

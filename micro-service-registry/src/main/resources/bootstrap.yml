@@ -1,0 +1,7 @@
+spring:
+    application:
+      name: FPFOS-EUREKA
+#    security:
+#      user:
+#        name: admin
+#        password: admin123

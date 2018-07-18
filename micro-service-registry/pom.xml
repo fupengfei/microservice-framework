@@ -28,15 +28,52 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>peer1</id>
+            <properties>
+                <profiles.active>peer1</profiles.active>
+                <docker-imageName>fpfos/${project.artifactId}/8761</docker-imageName>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>peer2</id>
+            <properties>
+                <profiles.active>peer2</profiles.active>
+                <docker-imageName>fpfos/${project.artifactId}/8762</docker-imageName>
+            </properties>
+        </profile>
+        <profile>
+            <id>peer3</id>
+            <properties>
+                <profiles.active>peer3</profiles.active>
+                <docker-imageName>fpfos/${project.artifactId}/8763</docker-imageName>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <filters>
+            <filter>src/main/resources/application-${profiles.active}.yml</filter>
+        </filters>
         <plugins>
+            <!--Docker maven plugin-->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <imageName>${docker-imageName}</imageName>
+                    <dockerDirectory>/</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -46,8 +83,7 @@
                     </resources>
                 </configuration>
             </plugin>
-
+            <!--Docker maven plugin-->
         </plugins>
-
     </build>
 </project>

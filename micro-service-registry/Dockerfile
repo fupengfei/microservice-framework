@@ -1,4 +1,5 @@
-FROM jdk:8
+FROM java
 VOLUME /tmp
-ADD spring-boot-docker-1.0.jar app.jar
+add ${project.artifactId}-${project.version}.jar application.jar
+EXPOSE 8761
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]

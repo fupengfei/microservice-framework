@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="logPath" value="./micro-log/micro-service-registry"/>
-    <property name="serverName" value="micro-service-registry"/>
+    <property name="logPath" value="/micro-log"/>
+    <property name="serverName" value="micro-service-registry-${profiles.active}"/>
     <contextName>${logPath}</contextName>
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

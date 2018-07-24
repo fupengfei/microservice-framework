@@ -10,11 +10,17 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.jdk-version>1.8</java.jdk-version>
+        <maven.version>3.7.0</maven.version>
+        <java-jdk.version>1.8</java-jdk.version>
         <system.encoding>UTF-8</system.encoding>
-        <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </parent>
 
     <modules>
         <module>micro-common-entity</module>
@@ -30,20 +36,17 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>microservice-user</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -67,6 +70,10 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -75,9 +82,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.version}</version>
                     <configuration>
-                        <source>${java.jdk-version}</source>
-                        <target>${java.jdk-version}</target>
+                        <source>${java-jdk.version}</source>
+                        <target>${java-jdk.version}</target>
                         <encoding>${system.encoding}</encoding>
                     </configuration>
                 </plugin>

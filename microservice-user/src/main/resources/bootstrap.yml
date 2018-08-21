@@ -1,0 +1,11 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: SERVICE-USER
+  cloud:
+    config:
+      uri: http://localhost:8000
+      name: microservice
+      profile: dev
+      label: master

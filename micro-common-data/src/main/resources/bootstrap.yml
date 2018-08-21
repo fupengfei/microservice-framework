@@ -1,0 +1,11 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: COMMON-DATA
+  cloud:
+    config:
+      uri: http://micro-service-config:8000
+      name: microservice
+      profile: dev
+      label: master

@@ -2,15 +2,12 @@ package com.fpfos.data.controller;
 
 import com.fpfos.common.core.entity.PdUser;
 import com.fpfos.common.core.utils.Utils;
-import com.fpfos.data.jparepository.UserJpaRepository;
-import com.fpfos.data.redisrepository.UserRedisRepository;
-import com.google.gson.Gson;
+import com.fpfos.data.repositories.jpa.UserJpaRepository;
+import com.fpfos.data.repositories.redis.UserRedisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Created by Fu Pengfei on 2018/8/15.
